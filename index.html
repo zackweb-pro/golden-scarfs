@@ -7,16 +7,22 @@
     <title>golden scarf</title>
     <link rel="stylesheet" href="style.css">
     <link rel="icon" href="./imgs/Screenshot 2022-09-02 150543.png">
-
+    <script src="https://kit.fontawesome.com/0a18d87a1d.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <nav>
         <div class="logo"> <a href="index.html" style="text-decoration:none; cursor: pointer; color: gold;">Golden scarf</a></div>
         <div class="search">
             <input type="text" id="search" placeholder="type your scarf name">
-            <button>search</button>
+            <i class="fas fa-search searchBtn"></i>
         </div>
     </nav>
+    <div class="control">
+        <div class="dark-light">
+            <i class="far fa-sun active"></i>
+            <i class="fas fa-moon "></i>
+        </div>
+    </div>
     <div class="scarfs">
         <div class="scarf">
             <img src="./imgs/92948.jpg" alt="" class="scarfImg">
@@ -63,7 +69,7 @@
         <div class="scarf">
             <img src="./imgs/92948.jpg" alt="" class="scarfImg">
             <div class="infoSection">
-                <div class="scarfname"> <span>Name: </span> scarf name 1</div>
+                <div class="scarfname"><span>Name: </span> scarf name 1</div>
                 <div class="scarfproductor"><span>Made by: </span> golden scarfs</div>
                 <div class="availableColors">
                     <span class="name">Available Colors: </span> <br>
@@ -124,5 +130,34 @@
         </div>
     </div>
     <script src="app.js"></script>
+    <script>
+        function myFunction() {
+    var input, filter, ul, li, a, i, txtValue;
+    input = document.getElementById("search");
+    filter = input.value.toUpperCase();
+    ul = document.querySelector(".scarfs");
+    li = document.querySelectorAll(".scarfs .scarfname");
+    for (i = 0; i < li.length; i++) {
+        a = li[i];
+        txtValue = a.textContent || a.innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            li[i].parentElement.parentElement.style.display = "block";
+        } else {
+            li[i].parentElement.parentElement.style.display = "none";
+        }
+    }
+    console.log(filter, ul, li , a, txtValue)
+}
+document.getElementById("search").addEventListener('input', ()=>{
+    if(document.getElementById("search").value != ""){
+        myFunction();
+    }else{
+        li = document.querySelectorAll(".scarfs .scarfname");
+        for (i = 0; i < li.length; i++) {
+            li[i].parentElement.parentElement.style.display = "block";
+        }
+    }
+});
+    </script>
 </body>
 </html>
